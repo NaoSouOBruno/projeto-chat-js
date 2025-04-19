@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de ChatBot</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app" class="app">
+
+        <header class="cabecalho">
+            <div class="icone">
+                <img class="foto" src="images/pedro.png">
+            </div>
+
+            <p class="nome">
+                Pedro Pascal
+            </p>
+        </header>
+
+        <div id="chat" class="chat">
+            <div class="mensagemAtendente">
+                hello my big fan from brazil! 😍
+            </div>
+
+            <div class="mensagemUser">
+                😱 pedro pascal famosíssimo ator internacional eu sou seu maior fã!
+            </div>
+
+            <div class="mensagemAtendente">
+                sorry i dont speak portuguese
+            </div>
+
+            <div class="mensagemUser">
+                💀
+            </div>
+
+            <div class="mensagemAtendente">
+                💀
+            </div>
+        </div>
+
+        <footer class="rodape">
+            <form id="formMensagem" method="post" action="https://httpbin.org/post" class="mt-4">
+            <div class="campoMensagem">
+                <input id="textoMensagem" type="text" class="inputMensagem" placeholder="Digite sua mensagem...">
+            </div>
+
+            <div class="botaoEnviar">
+                <button type="submit" class="inputEnviar"></button>
+                <img class="imgEnviar" src="images/enviar.png" alt="Enviar">
+            </div>
+            </form>
+        </footer>
+
+    </div>
+    <p></p>
+    <script>
+        const chat = document.querySelector("#chat")
+        const formMensagem = document.querySelector("#formMensagem");
+        const textoMensagem = document.querySelector("#textoMensagem");
+
+        formMensagem.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            if (textoMensagem.value === "") {
+                alert("Digite uma mensagem antes de enviar.");
+                return;
+            }
+            else {
+                const novaMensagem = document.createElement("div");
+                novaMensagem.classList.add("mensagemUser");
+
+                novaMensagem.innerHTML = `${textoMensagem.value}`;
+                chat.appendChild(novaMensagem);
+
+                console.log("Mensagem enviada :: "+ textoMensagem.value);
+                
+                textoMensagem.value = "";
+            }
+            
+        })
+    </script>
+</body>
+
+</html>
